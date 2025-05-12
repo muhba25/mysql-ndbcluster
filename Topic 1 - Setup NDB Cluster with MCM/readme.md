@@ -108,21 +108,17 @@ set ReceiveBufferMemory:mysqld+ndbmtd=500M dc01-mysql;
 ```
 mcm> start cluster dc01-mysql;
 mcm> show status --process dc01-mysql;
- 
-
 ```
 
-## Add Process
+## Additional Add Process & Setup Replication
 ```
-Additional how to add process
+// Additional how to add process
+
 add process -R ndbapi@*,ndbapi@* dc01-mysql;
 add process -R ndb_mgmd:146@192.168.1.12 dc01-mysql;
 add process -R ndbmtd:1@192.168.1.13 dc01-mysql;
 add process -R mysqld@192.168.1.17 dc01-mysql;
-```
 
-## Additional Setup Replication
-```
 // Set Replica
 
 On DC Node 1
